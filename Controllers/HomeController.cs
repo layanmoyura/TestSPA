@@ -22,6 +22,13 @@ namespace TestSPA.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetProducts()
+        {
+            var products = await _productRepository.GetAllProductsAsync();
+            return Json(products);
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveProduct(Product product)
         {

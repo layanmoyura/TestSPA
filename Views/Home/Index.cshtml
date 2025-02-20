@@ -2,8 +2,6 @@
     ViewData["Title"] = "Product Management";
 }
 
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/> 
-
 <div class="container mt-4">
     <h2 class="mb-4 text-center">Product Management</h2>
 
@@ -11,6 +9,9 @@
     <div class="card shadow-lg">
         <div class="card-body">
             <div class="row g-3">
+                <div class="col-md-4" style="display: none;">
+                    <input type="hidden" id="productId">
+                </div>
                 <div class="col-md-4">
                     <input type="text" id="name" class="form-control" placeholder="Product Name">
                 </div>
@@ -21,7 +22,7 @@
                     <input type="number" id="stock" class="form-control" placeholder="Stock">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-primary w-100" onclick="addProduct()">Add Product</button>
+                    <button class="btn btn-primary w-100" onclick="saveProduct()">Add Product</button>
                 </div>
             </div>
         </div>
@@ -43,8 +44,5 @@
     </div>
 </div>
 
-<!-- Bootstrap & jQuery -->
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/products.js"></script>
 
 
