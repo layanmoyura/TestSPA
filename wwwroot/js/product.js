@@ -32,26 +32,24 @@ function editProduct(id, name, price, stock) {
 
     $("#productId").val(id);
 
-    $("#btnSave").text("Update Product").attr("onclick", "saveProduct()");
+    $("#btnSave").text("Update Product");
 }
 
 function saveProduct() {
     let product = {
-        Name: $("#name").val(),
-        Price: $("#price").val(),
-        Stock: $("#stock").val()
+        id: $("#productId").val(),
+        name: $("#name").val(),
+        price: $("#price").val(),
+        stock: $("#stock").val()
     };
 
     $.ajax({
         url: "/Home/SaveProduct",
         type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(product),
+        data: { product: product },
         success: function () {
             loadProducts();
-            $("#name").val("");
-            $("#price").val("");
-            $("#stock").val("");
+            resetForm();
         }
     });
 }
@@ -62,11 +60,9 @@ function deleteProduct(id) {
         type: "DELETE",
         data: { id: id },
         success: function (response) {
-            if (response.success) {
-                loadProducts();
-            } else {
-                alert("Error deleting product");
-            }
+            resetForm();
+            loadProducts();
+            alert("Deleted")
         }
     });
 }
@@ -77,5 +73,5 @@ function resetForm() {
     $("#stock").val("");
     $("#productId").val("");
 
-    $("#btnSave").text("Add Product").attr("onclick", "addProduct()");
+    $("#btnSave").text("Add Product");
 }

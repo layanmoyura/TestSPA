@@ -32,10 +32,9 @@ namespace TestSPA.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveProduct(Product product)
         {
-            if (ModelState.IsValid)
-            {
-                await _productRepository.SaveProductAsync(product);
-            }
+
+            await _productRepository.SaveProductAsync(product);
+            
             return RedirectToAction("Index");
         }
 
