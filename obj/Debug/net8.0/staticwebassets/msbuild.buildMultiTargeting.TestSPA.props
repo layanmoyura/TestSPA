@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\TestSPA.props" />
-</Project>
