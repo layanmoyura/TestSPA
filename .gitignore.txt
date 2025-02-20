@@ -1,0 +1,28 @@
+# Build Folders
+bin/
+obj/
+
+# User-Specific Files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+*.tlog
+
+# Config files
+appsettings.json
+appsettings.Development.json
+
+# Environment
+.env
+secrets.json
+
+# IDE & Editor Files
+*.swp
+.idea/
+.vscode/
