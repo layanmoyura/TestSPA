@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TestSPA.Interfaces;
 using TestSPA.Models;
 
 namespace TestSPA.Controllers
@@ -7,17 +8,35 @@ namespace TestSPA.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AppDbContext _context;
+        private readonly IProductRepository _productRepository;
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext context)
+        public HomeController(ILogger<HomeController> logger, IProductRepository productRepository)
         {
             _logger = logger;
-            _context = context;
+            _productRepository = productRepository;
+    
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productRepository.SaveProductAsync(product);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _productRepository.DeleteProductAsync(id);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TestSPA.Interfaces;
+using TestSPA.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options  =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
