@@ -50,6 +50,7 @@ function saveProduct() {
         success: function () {
             loadProducts();
             resetForm();
+            alert("Saved");
         }
     });
 }
